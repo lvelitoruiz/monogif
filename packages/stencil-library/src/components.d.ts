@@ -11,21 +11,7 @@ export namespace Components {
         "text": string;
     }
     interface ImageComponent {
-        "image": string;
-    }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "image": {legend: string, image:string};
     }
     interface ParagraphText {
         "size": string;
@@ -35,6 +21,14 @@ export namespace Components {
     }
     interface SwitchComponent {
     }
+}
+export interface SearchComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSearchComponentElement;
+}
+export interface SwitchComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSwitchComponentElement;
 }
 declare global {
     interface HTMLButtonComponentElement extends Components.ButtonComponent, HTMLStencilElement {
@@ -48,12 +42,6 @@ declare global {
     var HTMLImageComponentElement: {
         prototype: HTMLImageComponentElement;
         new (): HTMLImageComponentElement;
-    };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
     };
     interface HTMLParagraphTextElement extends Components.ParagraphText, HTMLStencilElement {
     }
@@ -76,7 +64,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "button-component": HTMLButtonComponentElement;
         "image-component": HTMLImageComponentElement;
-        "my-component": HTMLMyComponentElement;
         "paragraph-text": HTMLParagraphTextElement;
         "search-component": HTMLSearchComponentElement;
         "switch-component": HTMLSwitchComponentElement;
@@ -88,34 +75,21 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface ImageComponent {
-        "image"?: string;
-    }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "image"?: {legend: string, image:string};
     }
     interface ParagraphText {
         "size"?: string;
         "text"?: string;
     }
     interface SearchComponent {
+        "onInputCompleted"?: (event: SearchComponentCustomEvent<any>) => void;
     }
     interface SwitchComponent {
+        "onChangeTheme"?: (event: SwitchComponentCustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "button-component": ButtonComponent;
         "image-component": ImageComponent;
-        "my-component": MyComponent;
         "paragraph-text": ParagraphText;
         "search-component": SearchComponent;
         "switch-component": SwitchComponent;
@@ -127,7 +101,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
             "image-component": LocalJSX.ImageComponent & JSXBase.HTMLAttributes<HTMLImageComponentElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "paragraph-text": LocalJSX.ParagraphText & JSXBase.HTMLAttributes<HTMLParagraphTextElement>;
             "search-component": LocalJSX.SearchComponent & JSXBase.HTMLAttributes<HTMLSearchComponentElement>;
             "switch-component": LocalJSX.SwitchComponent & JSXBase.HTMLAttributes<HTMLSwitchComponentElement>;

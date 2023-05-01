@@ -1,4 +1,4 @@
-import { Component, State, Watch, h } from '@stencil/core';
+import { Component, State, Event, EventEmitter, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'switch-component',
@@ -11,14 +11,18 @@ export class SwitchComponent {
 
   @State() status: boolean = false;
 
+  @Event() changeTheme: EventEmitter<any>;
+
   @Watch('theme')
   parseStatus(event: Event) {
     let targetElement = event.target as HTMLInputElement;
     let valueOfEl = targetElement.checked;
     if (targetElement && valueOfEl) {
       this.theme = "Dark";
+      this.changeTheme.emit("dark")
     } else {
       this.theme = "Ligth";
+      this.changeTheme.emit("ligth");
     }
   }
 

@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `image`  | `image`   |             | `string` | `undefined` |
+| Property | Attribute | Description | Type                                 | Default     |
+| -------- | --------- | ----------- | ------------------------------------ | ----------- |
+| `image`  | --        |             | `{ legend: string; image: string; }` | `undefined` |
 
 
 ----------------------------------------------
