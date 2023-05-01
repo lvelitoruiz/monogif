@@ -4,6 +4,9 @@ As we're gonna use **Lerna** we need to install it globally:
 ```
 npm  install  --global lerna
 ```
+```
+make sure we're using node version v19.8.1 for all the installations and runs
+```
 
 Inside the project on the root folder we need to run the install of NPM:
 
@@ -12,9 +15,13 @@ npm install
 ```
 We need to run this command as well on the next folders:
 
+```
 packages/gif-gallery
+
 packages/stencil-library
+
 packages/react-library
+```
 
 When this is done you only need to run the next commands:
 
